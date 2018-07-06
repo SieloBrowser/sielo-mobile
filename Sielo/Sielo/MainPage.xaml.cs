@@ -14,8 +14,13 @@ namespace Sielo
 		{
 			InitializeComponent();
 
+            // Web View events
 		    webView.Navigating += PageLoading;
+
+            // Action bar event
 		    actionBar.LoadRequest += OnLoadRequest;
+		    actionBar.GoBack += OnGoBack;
+		    actionBar.GoForward += OnGoForward;
 		}
 
 	    void PageLoading(object sender, WebNavigatingEventArgs e)
@@ -27,5 +32,17 @@ namespace Sielo
 	    {
 	        webView.Source = e.Url;
 	    }
-	}
+
+	    void OnGoBack(object sender, EventArgs e)
+	    {
+            if (webView.CanGoBack) 
+                webView.GoBack();
+	    }
+
+	    void OnGoForward(object sender, EventArgs e)
+	    {
+	        if (webView.CanGoForward)
+	            webView.GoForward();
+	    }
+    }
 }

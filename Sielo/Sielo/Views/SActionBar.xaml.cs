@@ -13,12 +13,16 @@ namespace Sielo.Views
 	public partial class SActionBar : ContentView
 	{
 	    public event EventHandler<LoadRequestEventArgs> LoadRequest;
+	    public event EventHandler GoBack;
+	    public event EventHandler GoForward;
 
-		public SActionBar ()
+        public SActionBar ()
 		{
 			InitializeComponent ();
 
 		    urlBar.SearchButtonPressed += OnUrlEntered;
+		    btnBack.Clicked += OnGoBackClicked;
+		    btnForward.Clicked += OnGoForwardClicked;
 		}
 
 	    public void SetUrl(string url)
@@ -26,7 +30,19 @@ namespace Sielo.Views
 	        urlBar.Text = url;
 	    }
 
-	    private void OnUrlEntered(object sender, EventArgs args)
+	    private void OnGoBackClicked(object sender, EventArgs e)
+	    {
+	        var handler = GoBack;
+            handler?.Invoke(this, new EventArgs());
+	    }
+
+	    private void OnGoForwardClicked(object sender, EventArgs e)
+	    {
+	        var handler = GoForward;
+	        handler?.Invoke(this, new EventArgs());
+	    }
+
+        private void OnUrlEntered(object sender, EventArgs args)
 	    {
 	        var url = urlBar.Text;
 
