@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Sielo"
              xmlns:web="clr-namespace:Sielo.Views.Web"
+             xmlns:views="clr-namespace:Sielo.Views"
              x:Class="Sielo.MainPage">
 
     <Grid>
@@ -11,13 +12,23 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="36" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <views:SActionBar 
+            x:Name="actionBar"
+            VerticalOptions="Center"
+            MinimumHeightRequest="36"
+            Grid.Row="0"
+            Grid.Column="0" />
+
         <web:SWebView 
+            x:Name="webView"
             MinimumHeightRequest="100"
             MinimumWidthRequest="100"
-            Grid.Row="0" 
+            Grid.Row="1" 
             Grid.Column="0" />
     </Grid>
 </ContentPage>
+

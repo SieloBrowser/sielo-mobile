@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sielo.Views.SActionBar">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32" />
+                <ColumnDefinition Width="32" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="32" />
+                <ColumnDefinition Width="32" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button x:Name="btnBack"
+                    MinimumHeightRequest="32"
+                    MinimumWidthRequest="32"
+                    Grid.Column="0"
+                    Grid.Row="0"/>
+
+            <Button x:Name="btnForward"
+                    MinimumHeightRequest="32"
+                    MinimumWidthRequest="32"
+                    Grid.Column="1"
+                    Grid.Row="0"/>
+
+            <SearchBar x:Name="urlBar"
+                       MinimumHeightRequest="32"
+                       Grid.Column="2"
+                       Grid.Row="0"/>
+
+            <Button x:Name="btnTabs"
+                    MinimumHeightRequest="32"
+                    MinimumWidthRequest="32"
+                    Grid.Column="3"
+                    Grid.Row="0"/>
+
+            <Button x:Name="btnMenu"
+                    MinimumHeightRequest="32"
+                    MinimumWidthRequest="32"
+                    Grid.Column="4"
+                    Grid.Row="0"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>
