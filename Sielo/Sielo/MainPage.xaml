@@ -17,14 +17,14 @@
         </Grid.RowDefinitions>
 
         <views:SActionBar 
-            x:Name="actionBar"
+            x:Name="mActionBar"
             VerticalOptions="Center"
             MinimumHeightRequest="36"
             Grid.Row="0"
             Grid.Column="0" />
 
-        <web:SWebView 
-            x:Name="webView"
+        <views:CentralView
+            x:Name="mCentralView"
             MinimumHeightRequest="100"
             MinimumWidthRequest="100"
             Grid.Row="1" 

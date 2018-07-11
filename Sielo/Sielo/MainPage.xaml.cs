@@ -10,39 +10,35 @@ namespace Sielo
 {
 	public partial class MainPage : ContentPage
 	{
+	    private int mCounter = 0;
+
 		public MainPage()
 		{
 			InitializeComponent();
 
-            // Web View events
-		    webView.Navigating += PageLoading;
+            // Web View actions
+		    mCentralView.Navigating += OnPageLoading;
 
             // Action bar event
-		    actionBar.LoadRequest += OnLoadRequest;
-		    actionBar.GoBack += OnGoBack;
-		    actionBar.GoForward += OnGoForward;
+		    mActionBar.LoadRequest += mCentralView.OnLoadRequest;
+		    mActionBar.GoBack += mCentralView.OnGoBack;
+		    mActionBar.GoForward += mCentralView.OnGoForward;
+		    mActionBar.ShowTabs += OnShowTabs;
 		}
 
-	    void PageLoading(object sender, WebNavigatingEventArgs e)
+	    void OnPageLoading(object sender, WebNavigatingEventArgs e)
 	    {
-            actionBar.SetUrl(e.Url);
+            mActionBar.SetUrl(e.Url);
 	    }
 
-	    void OnLoadRequest(object sender, LoadRequestEventArgs e)
+	    void OnShowTabs(object sender, EventArgs e)
 	    {
-	        webView.Source = e.Url;
-	    }
+            mCentralView.SetTab(mCounter);
 
-	    void OnGoBack(object sender, EventArgs e)
-	    {
-            if (webView.CanGoBack) 
-                webView.GoBack();
-	    }
-
-	    void OnGoForward(object sender, EventArgs e)
-	    {
-	        if (webView.CanGoForward)
-	            webView.GoForward();
+	        if (mCounter < 4)
+	            mCounter++;
+	        else
+	            mCounter--;
 	    }
     }
 }

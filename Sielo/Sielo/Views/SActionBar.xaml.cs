@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Activation;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +14,7 @@ namespace Sielo.Views
 	    public event EventHandler<LoadRequestEventArgs> LoadRequest;
 	    public event EventHandler GoBack;
 	    public event EventHandler GoForward;
+	    public event EventHandler ShowTabs;
 
         public SActionBar ()
 		{
@@ -23,6 +23,7 @@ namespace Sielo.Views
 		    urlBar.SearchButtonPressed += OnUrlEntered;
 		    btnBack.Clicked += OnGoBackClicked;
 		    btnForward.Clicked += OnGoForwardClicked;
+		    btnTabs.Clicked += OnShowTabsClicked;
 		}
 
 	    public void SetUrl(string url)
@@ -40,6 +41,12 @@ namespace Sielo.Views
 	    {
 	        var handler = GoForward;
 	        handler?.Invoke(this, new EventArgs());
+	    }
+
+	    private void OnShowTabsClicked(object sender, EventArgs e)
+	    {
+	        var handler = ShowTabs;
+            handler?.Invoke(this, new EventArgs());
 	    }
 
         private void OnUrlEntered(object sender, EventArgs args)

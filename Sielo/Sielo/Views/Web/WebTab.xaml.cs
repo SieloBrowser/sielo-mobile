@@ -10,13 +10,16 @@ using Xamarin.Forms.Xaml;
 namespace Sielo.Views.Web
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SWebView : WebView
+	public partial class WebTab : ContentView
 	{
-		public SWebView ()
+	    public WebView view;
+
+        public WebTab ()
 		{
 			InitializeComponent ();
 
-		    Source = Sielo.Helpers.Settings.HomePage;
-		}
+		    view = new WebView();
+		    view.Source = Sielo.Helpers.Settings.HomePage;
+        }
 	}
 }
